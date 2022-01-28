@@ -32,3 +32,9 @@ public class MarkdownParse {
         System.out.println(links);
     }
 }
+
+/*
+if (markdown.charAt(nextOpenBracket - 1) == '!' && nextCloseBracket == openParen - 1) {
+                toReturn.add(markdown.substring(openParen + 1, closeParen));
+            }
+*/
