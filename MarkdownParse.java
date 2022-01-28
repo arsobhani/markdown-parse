@@ -17,7 +17,12 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", openParen);
             //this checks if any of the characters are not found within the file at all
             if (nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1) break;
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            //this checks if the character before the open bracket is a '!'
+            //since that would create an image
+            //the 0 is to prevent out of bounds error if the open bracket is at index 0
+            if (nextOpenBracket == 0 || markdown.charAt(nextOpenBracket-1) != '!') {
+                toReturn.add(markdown.substring(openParen + 1, closeParen));
+            }
             currentIndex = closeParen + 1;
         }
         return toReturn;
