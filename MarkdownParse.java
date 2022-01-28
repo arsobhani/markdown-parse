@@ -20,9 +20,11 @@ public class MarkdownParse {
             //this checks if the character before the open bracket is a '!'
             //since that would create an image
             //the 0 is to prevent out of bounds error if the open bracket is at index 0
-            if (nextOpenBracket == 0 || markdown.charAt(nextOpenBracket-1) != '!') {
+            if (nextOpenBracket == 0 || markdown.charAt(nextOpenBracket-1) != '!' && markdown.charAt(openParen - 1) == ']') {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
+            //the final change is to make it so that the link will be added only if the 
+            //close bracket and open parenthesis are adjacent to each other
             currentIndex = closeParen + 1;
         }
         return toReturn;
