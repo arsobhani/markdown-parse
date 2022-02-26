@@ -73,22 +73,22 @@ public class MarkdownParseTest {
     @Test
     public void testFileOne() throws IOException {
         String contents= Files.readString(Path.of("./test-file?.md"));
-        List<String> expect = List.of("a link on the first line");
-        assertEquals(MarkdownParse.getLinks(contents), 0);
+        List<String> expect = List.of("`google.com", "google.com", "ucsd.edu");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
     }
 
     @Test
     public void testFileTwo() throws IOException {
         String contents= Files.readString(Path.of("./test-file??.md"));
-        List<String> expect = List.of("a link on the first line");
-        assertEquals(MarkdownParse.getLinks(contents), 0);
+        List<String> expect = List.of("a.com", "a.com(())", "example.com");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
     }
 
     @Test
     public void testFileThree() throws IOException {
         String contents= Files.readString(Path.of("./test-file???.md"));
-        List<String> expect = List.of("a link on the first line");
-        assertEquals(MarkdownParse.getLinks(contents), 0);
+        List<String> expect = List.of();
+        assertEquals(expect, MarkdownParse.getLinks(contents));
     }
 
 
