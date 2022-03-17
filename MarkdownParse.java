@@ -23,6 +23,11 @@ public class MarkdownParse {
             if (nextOpenBracket == 0 || markdown.charAt(nextOpenBracket-1) != '!' && markdown.charAt(openParen - 1) == ']') {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
             }
+            //I did not add an if clause that would check if there existed a newline 
+            // "\n" before adding the supposed link to the list
+
+
+
             //the final change is to make it so that the link will be added only if the 
             //close bracket and open parenthesis are adjacent to each other
             currentIndex = closeParen + 1;
